@@ -46,7 +46,7 @@ private val DarkThemeColors = darkColors(
     background = Color.Black,
     onBackground = Color.White,
     surface = Black1,
-    onSurface = Color.White,
+    onSurface = Color.Gray,
 )
 
 @Composable

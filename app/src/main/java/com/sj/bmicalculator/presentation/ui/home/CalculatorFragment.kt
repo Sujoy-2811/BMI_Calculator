@@ -18,7 +18,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.sj.bmicalculator.BaseActivity
 import com.sj.bmicalculator.R
+import com.sj.bmicalculator.model.data
 import com.sj.bmicalculator.presentation.components.AppBar
+import com.sj.bmicalculator.presentation.components.Gender
 import com.sj.bmicalculator.presentation.theme.appTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -38,26 +40,32 @@ class CalculatorFragment:Fragment() {
 
         return ComposeView(requireContext()).apply {
             setContent {
+
+                val members = viewModel.members
+
+
                 appTheme(isDark = application.isDarkTheme.value) {
                     Scaffold(
                         topBar = { AppBar(themeChange = application::changeTheme, image = image) },
                         drawerContent = {
                             IconButton(onClick = { },
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.MoreVert,
-                                contentDescription = null
-                            )
-                        }
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.MoreVert,
+                                    contentDescription = null
+                                )
+                            }
                         }
                     ) {
                         Column( modifier = Modifier.fillMaxSize()
                         ) {
 
+                            Gender(members = members , gender = viewModel::genderSelection)
+
                         }
 
                     }
-                    
+
                 }
 
             }

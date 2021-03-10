@@ -26,29 +26,29 @@ fun Gender(
 ) {
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
+            .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         for (member in members){
-            Card(modifier = Modifier
+            Surface(modifier = Modifier
                 .clickable {
                     gender(member.isMale)
                     Log.d("Sujay", "${ member.isMale }")
-                }
-                .background(color = if (member.selected.value) Color.Green else MaterialTheme.colors.onSurface)
-                .padding(5.dp)
+                }.background(color = if (member.selected.value) Color.Green else MaterialTheme.colors.onSurface)
+                .padding(5.dp),
+
 
             ) {
                 Row(modifier = Modifier
                     .background(color = MaterialTheme.colors.onSurface)
-                    .padding(15.dp)
+                    .padding(15.dp),
+                    horizontalArrangement = Arrangement.Center
 
                 ) {
                     Image(bitmap = ImageBitmap.imageResource(id = member.image), contentDescription =null,
                         modifier = Modifier
-                            .height(140.dp)
-                            .width(140.dp)
+                            .height(125.dp)
+                            .width(125.dp)
                             .background(color = MaterialTheme.colors.onSurface),
                     )
 

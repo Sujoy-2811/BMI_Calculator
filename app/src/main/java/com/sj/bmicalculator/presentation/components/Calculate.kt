@@ -35,6 +35,8 @@ fun Calculate(
         Button(onClick = {Log.d("Sujay", "Result : $result")
             val bundle = Bundle()
             bundle.putFloat("resultId" , result)
+            bundle.putBoolean("isMaleId", isMale)
+            bundle.putInt("ageId" , age)
         navController.navigate(id, bundle)
         }) {
 

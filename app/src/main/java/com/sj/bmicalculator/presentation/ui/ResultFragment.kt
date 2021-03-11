@@ -14,10 +14,18 @@ import androidx.compose.ui.platform.ComposeView
 class ResultFragment : Fragment() {
     
     var result : Float = 0f
+    var isMale : Boolean? = null
+    var age : Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.getFloat("resultId")?.let { 
             result =it
+        }
+        arguments?.getBoolean("isMaleId")?.let {
+            isMale=it
+        }
+        arguments?.getInt("ageId")?.let {
+            age =it
         }
     }
 
@@ -31,7 +39,9 @@ class ResultFragment : Fragment() {
             setContent {
                 Row() {
                     Text(text = "$result" , style = MaterialTheme.typography.h2)
-                    
+                    Text(text = "$isMale" , style = MaterialTheme.typography.h2)
+                    Text(text = "$age" , style = MaterialTheme.typography.h2)
+
                 }
 
             }

@@ -1,9 +1,6 @@
 package com.sj.bmicalculator.presentation.components
 
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CutCornerShape
@@ -35,15 +32,16 @@ fun Weight(
 ) {
     val color =MaterialTheme.colors.secondary
     Column(modifier = Modifier
-        .fillMaxWidth(0.45f)
-        .padding(top = 8.dp , end = 8.dp)
+        .width(175.dp)
+//        .border(border = BorderStroke(width = 1.dp , color = Color.Red))
+        .padding(top = 8.dp  , bottom = 8.dp , start = 4.dp , end =4.dp)
         .background(color = MaterialTheme.colors.onSurface)
     ) {
         Text(text = "Weight",
             style = MaterialTheme.typography.h4,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
-        Text(text = "${if (weight.toInt() == -1) "" else weight} cm",
+        Text(text = "${if (weight.toInt() == -1) "" else weight} Kg",
             style = MaterialTheme.typography.h5,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)

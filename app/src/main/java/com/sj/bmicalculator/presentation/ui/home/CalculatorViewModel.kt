@@ -21,6 +21,7 @@ constructor(
     val isMale = mutableStateOf(false)
     val height = mutableStateOf(-1)
     val weight = mutableStateOf(50)
+    val age = mutableStateOf(20)
     var members = data().members.value
     val minus = R.drawable.ic_minus
     val  add =R.drawable.ic_add
@@ -46,19 +47,6 @@ constructor(
         }
         Log.d("Sujay" , "Height : ${this.height.value}")
     }
-    fun changeWeight(weight : String){
-        if (weight == ""){
-            this.height.value = -1
-        }else{
-            try {
-                this.weight.value = weight.toInt()
-            }catch (e : Exception){
-                this.weight.value = -1
-            }
-        }
-        Log.d("Sujay" , "Weight : ${this.weight.value}")
-
-    }
 
     fun decWeight(){
         if (weight.value == 1){
@@ -66,6 +54,7 @@ constructor(
         }else{
             weight.value--
         }
+        Log.d("Sujay" , "Weight : ${this.weight.value}")
     }
 
     fun inWeight(){
@@ -74,6 +63,25 @@ constructor(
         }else{
             weight.value++
         }
+        Log.d("Sujay" , "Weight : ${this.weight.value}")
+    }
+
+    fun decAge(){
+        if (age.value == 1){
+            age.value = 100
+        }else{
+            age.value--
+        }
+        Log.d("Sujay" , "Age : ${this.age.value}")
+    }
+
+    fun incAge(){
+        if (age.value == 100){
+            age.value = 1
+        }else{
+            age.value++
+        }
+        Log.d("Sujay" , "Age : ${this.age.value}")
     }
 
 }

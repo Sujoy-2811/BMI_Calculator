@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
@@ -25,10 +23,7 @@ import androidx.fragment.app.viewModels
 import com.sj.bmicalculator.BaseActivity
 import com.sj.bmicalculator.R
 import com.sj.bmicalculator.model.data
-import com.sj.bmicalculator.presentation.components.AppBar
-import com.sj.bmicalculator.presentation.components.Gender
-import com.sj.bmicalculator.presentation.components.Height
-import com.sj.bmicalculator.presentation.components.Weight
+import com.sj.bmicalculator.presentation.components.*
 import com.sj.bmicalculator.presentation.theme.appTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -52,6 +47,7 @@ class CalculatorFragment:Fragment() {
                 val members = viewModel.members
                 val height = viewModel.height.value.toString()
                 val weight = viewModel.weight.value.toString()
+                val age = viewModel.age.value.toString()
                 val add = viewModel.add
                 val minus = viewModel.minus
 
@@ -80,12 +76,25 @@ class CalculatorFragment:Fragment() {
                                 Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
                                 imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)}
                             )
-                            Weight(
-                                weight = weight,
-                                addImg = add,
-                                minusImg = minus,
-                                decWeight = viewModel::decWeight,
-                                incWeight = viewModel::inWeight)
+                            Row(modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Center
+                            ) {
+                                Weight(
+                                    weight = weight,
+                                    addImg = add,
+                                    minusImg = minus,
+                                    decWeight = viewModel::decWeight,
+                                    incWeight = viewModel::inWeight)
+
+                                Age(
+                                    age = age,
+                                    addImg = add,
+                                    minusImg = minus,
+                                    decAge = viewModel::decAge,
+                                    incAge = viewModel::incAge)
+
+                            }
+                            Calculate()
 
                         }
 

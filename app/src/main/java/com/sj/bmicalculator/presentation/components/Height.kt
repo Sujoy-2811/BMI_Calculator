@@ -21,10 +21,14 @@ fun Height(
 ) {
     Column(modifier = Modifier
         .fillMaxWidth()
-        .padding(top = 16.dp)
+        .padding(top = 12.dp, bottom = 12.dp)
         .background(MaterialTheme.colors.onSurface)
-        .padding(top = 16.dp, bottom = 8.dp),
     ) {
+        Text(text = "HEIGHT",
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            style = MaterialTheme.typography.h4
+        )
+
         Text(text = "${if (height.toInt() == -1) "0" else height} cm",
         modifier = Modifier.align(Alignment.CenterHorizontally),
             style = MaterialTheme.typography.h5

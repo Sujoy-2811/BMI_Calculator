@@ -9,6 +9,8 @@ import android.view.inputmethod.InputMethodManager
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -26,6 +28,7 @@ import com.sj.bmicalculator.model.data
 import com.sj.bmicalculator.presentation.components.AppBar
 import com.sj.bmicalculator.presentation.components.Gender
 import com.sj.bmicalculator.presentation.components.Height
+import com.sj.bmicalculator.presentation.components.Weight
 import com.sj.bmicalculator.presentation.theme.appTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -48,6 +51,9 @@ class CalculatorFragment:Fragment() {
 
                 val members = viewModel.members
                 val height = viewModel.height.value.toString()
+                val weight = viewModel.weight.value.toString()
+                val add = viewModel.add
+                val minus = viewModel.minus
 
 
                 appTheme(isDark = application.isDarkTheme.value) {
@@ -63,7 +69,9 @@ class CalculatorFragment:Fragment() {
                             }
                         }
                     ) {
-                        Column( modifier = Modifier.fillMaxSize()
+                        Column( modifier = Modifier
+                            .verticalScroll(rememberScrollState())
+                            .fillMaxSize()
                             .padding(15.dp)
                         ) {
 
@@ -72,6 +80,12 @@ class CalculatorFragment:Fragment() {
                                 Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
                                 imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)}
                             )
+                            Weight(
+                                weight = weight,
+                                addImg = add,
+                                minusImg = minus,
+                                decWeight = viewModel::decWeight,
+                                incWeight = viewModel::inWeight)
 
                         }
 

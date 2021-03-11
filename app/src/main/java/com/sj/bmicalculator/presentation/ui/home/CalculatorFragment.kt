@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.sj.bmicalculator.BaseActivity
 import com.sj.bmicalculator.R
 import com.sj.bmicalculator.model.data
@@ -48,8 +49,10 @@ class CalculatorFragment:Fragment() {
                 val height = viewModel.height.value.toString()
                 val weight = viewModel.weight.value.toString()
                 val age = viewModel.age.value.toString()
+                val isMale  = viewModel.isMale.value
                 val add = viewModel.add
                 val minus = viewModel.minus
+                val id = R.id.viewResult
 
 
                 appTheme(isDark = application.isDarkTheme.value) {
@@ -94,7 +97,14 @@ class CalculatorFragment:Fragment() {
                                     incAge = viewModel::incAge)
 
                             }
-                            Calculate()
+                            Calculate(
+                                navController = findNavController(),
+                                isMale = isMale,
+                                height = height.toInt(),
+                                weight = weight.toInt(),
+                                age = age.toInt(),
+                                id = id
+                            )
 
                         }
 

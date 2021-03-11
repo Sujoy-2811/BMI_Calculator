@@ -11,13 +11,12 @@
         <action
             android:id="@+id/action_calculatorFragment_to_resultFragment2"
             app:destination="@id/resultFragment2" />
+        <action
+            android:id="@+id/viewResult"
+            app:destination="@id/resultFragment2" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment2"
         android:name="com.sj.bmicalculator.presentation.ui.ResultFragment"
-        android:label="ResultFragment" >
-        <action
-            android:id="@+id/action_resultFragment2_to_calculatorFragment"
-            app:destination="@id/calculatorFragment" />
-    </fragment>
+        android:label="ResultFragment" />
 </navigation>

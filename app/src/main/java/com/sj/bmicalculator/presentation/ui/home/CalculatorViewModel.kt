@@ -34,6 +34,8 @@ constructor(
             members[0].selected.value = false
             members[1].selected.value = true
         }
+        this.isMale.value = isMale
+        Log.d("Sujay" , "Male : ${this.isMale.value}")
     }
     fun changeHeight(height : String){
         if (height == ""){
